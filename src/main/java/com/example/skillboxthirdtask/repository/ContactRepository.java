@@ -11,9 +11,9 @@ public interface ContactRepository {
 
     Optional<Contact> findById(Long id);
 
-    Contact save(Contact task);
+    Contact save(Contact contact);
 
-    Contact update(Contact task);
+    Contact update(Contact contact);
 
     void deleteById(Long id);
 

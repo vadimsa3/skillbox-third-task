@@ -1,7 +1,7 @@
--- Создание схемы tasks_schema
+-- Создание схемы contacts_schema
 CREATE SCHEMA IF NOT EXISTS contacts_schema;
 
--- Создание таблицы task в схеме tasks_schema
+-- Создание таблицы contacts в схеме contacts_schema
 CREATE TABLE IF NOT EXISTS contacts_schema.contact
 (
     id BIGSERIAL PRIMARY KEY,

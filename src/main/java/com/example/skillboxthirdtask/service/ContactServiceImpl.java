@@ -13,7 +13,7 @@ import java.util.List;
 @Slf4j
 public class ContactServiceImpl implements ContactService {
 
-    private final ContactRepository contactRepository;
+    private ContactRepository contactRepository;
 
     @Override
     public List<Contact> findAll() {
