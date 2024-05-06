@@ -30,12 +30,18 @@ public class ContactController {
 
     @PostMapping("/add")
     public String addContact(@ModelAttribute("contact") Contact contact) {
+        contactService.save(contact);
         return "redirect:/contacts";
     }
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable("id") Long id, Model model) {
-        return "contact-form";
+        Contact contact = contactService.findById(id);
+        if (contact != null) {
+            model.addAttribute("contact", contact);
+            return "contact-form";
+        }
+        return "redirect:/contacts";
     }
 
     @PostMapping("/edit/{id}")
@@ -49,5 +55,4 @@ public class ContactController {
         contactService.deleteById(id);
         return "redirect:/contacts";
     }
-
 }
