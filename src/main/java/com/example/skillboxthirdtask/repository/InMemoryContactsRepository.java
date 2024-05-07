@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+// вариант репозитория без БД
 @Repository
 @Slf4j
 public class InMemoryContactsRepository implements ContactRepository {
 
-    // временная база контактов на удаление
     private final List<Contact> contacts = new ArrayList<>();
 
     @Override
@@ -54,5 +54,10 @@ public class InMemoryContactsRepository implements ContactRepository {
     public void deleteById(Long id) {
         log.debug("Call deleteById in InMemoryContactsRepository. ID is {}", id);
         findById(id).ifPresent(contacts::remove);
+    }
+
+    @Override
+    public void batchInsert(List<Contact> tasks) {
+        this.contacts.addAll(contacts);
     }
 }

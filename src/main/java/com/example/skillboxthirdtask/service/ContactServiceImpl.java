@@ -47,9 +47,9 @@ public class ContactServiceImpl implements ContactService {
         contactRepository.deleteById(id);
     }
 
-//    @Override
-//    public void bathInsert(List<Task> tasks) {
-//        log.debug("Call bathInsert in TaskServiceImpl");
-//        taskRepository.batchInsert(tasks);
-//    }
+    @Override
+    public void bathInsert(List<Contact> contacts) {
+        log.debug("Call bathInsert in ContactServiceImpl");
+        contactRepository.batchInsert(contacts);
+    }
 }

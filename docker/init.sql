@@ -1,3 +1,5 @@
+-- Файл выполняется при старте контейнера
+
 -- Создание схемы contacts_schema
 CREATE SCHEMA IF NOT EXISTS contacts_schema;
 

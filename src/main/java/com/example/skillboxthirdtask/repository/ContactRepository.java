@@ -17,5 +17,6 @@ public interface ContactRepository {
 
     void deleteById(Long id);
 
-//    void batchInsert(List<Task> tasks);
+    // пакетная вставка
+    void batchInsert(List<Contact> contacts);
 }

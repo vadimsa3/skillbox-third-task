@@ -4,7 +4,8 @@ import lombok.Data;
 import lombok.experimental.FieldNameConstants;
 
 @Data
-//@FieldNameConstants
+// предоставляет имена полей в ContactRowMapper
+@FieldNameConstants
 public class Contact {
 
     private Long id;
