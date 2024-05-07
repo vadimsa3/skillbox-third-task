@@ -23,7 +23,7 @@ public class DatabaseContactCreator {
     public void createContactData() {
         log.debug("Calling DatabaseContactCreator -> createContactData ...");
         List<Contact> contacts = new ArrayList<>();
-        // создаем список контактов
+        // создаем автоматом список из 10 контактов
         for (int i = 0; i < 10; i++) {
             int value = i + 1;
             Contact contact = new Contact();
