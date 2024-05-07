@@ -12,7 +12,8 @@ import java.util.Optional;
 @Slf4j
 public class InMemoryContactsRepository implements ContactRepository {
 
-    private List<Contact> contacts = new ArrayList<>();
+    // временная база контактов на удаление
+    private final List<Contact> contacts = new ArrayList<>();
 
     @Override
     public List<Contact> findAll() {
@@ -41,6 +42,8 @@ public class InMemoryContactsRepository implements ContactRepository {
         log.debug("Call update in InMemoryContactsRepositoryy. Task is {}", contact);
         Contact existedContact = findById(contact.getId()).orElse(null);
         if (existedContact != null) {
+            existedContact.setFirstName(contact.getFirstName());
+            existedContact.setLastName(contact.getLastName());
             existedContact.setEmail(contact.getEmail());
             existedContact.setPhone(contact.getPhone());
         }

@@ -7,14 +7,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("/contacts")
 @RequiredArgsConstructor
 public class ContactController {
 
-    private ContactService contactService;
+    private final ContactService contactService;
+
+    @GetMapping("/show")
+    public String showContacts(Model model) {
+        return "contact-list";
+    }
 
     @GetMapping
     public String listContacts(Model model) {
