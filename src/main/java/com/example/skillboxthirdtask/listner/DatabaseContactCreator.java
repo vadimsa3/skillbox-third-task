@@ -18,7 +18,8 @@ public class DatabaseContactCreator {
 
     private final ContactService contactService;
 
-    // будет вызван после старта приложения и настройки контекста
+    // будет вызван после старта приложения и настройки контекста для предсоздания списка контактов
+    // (если закоммитить - не будут создаваться))
     @EventListener(ApplicationStartedEvent.class)
     public void createContactData() {
         log.debug("Calling DatabaseContactCreator -> createContactData ...");
