@@ -79,27 +79,4 @@ public class DatabaseContactsRepository implements ContactRepository {
         String sqlRequest = "DELETE FROM contact WHERE id = ?";
         jdbcTemplate.update(sqlRequest, id);
     }
-
-    // метод для пакетной операции вставки (отправка несколько sql запросов за одну трансакцию)
-    @Override
-    public void batchInsert(List<Contact> contacts) {
-        log.debug("Calling DatabaseContactsRepository -> batchInsert");
-        String sqlRequest = "INSERT INTO contact (id, firstName, lastName, email, phone) VALUES (?, ?, ?, ?, ?)";
-        jdbcTemplate.batchUpdate(sqlRequest, new BatchPreparedStatementSetter() {
-            @Override
-            public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
-                Contact contact = contacts.get(i);
-                preparedStatement.setLong(1, contact.getId());
-                preparedStatement.setString(2, contact.getFirstName());
-                preparedStatement.setString(3, contact.getLastName());
-                preparedStatement.setString(4, contact.getEmail());
-                preparedStatement.setString(5, contact.getPhone());
-            }
-            // размер пакетной операции
-            @Override
-            public int getBatchSize() {
-                return contacts.size();
-            }
-        });
-    }
 }

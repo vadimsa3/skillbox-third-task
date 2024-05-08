@@ -15,6 +15,4 @@ public interface ContactService {
     Contact update(Contact contact);
 
     void deleteById(Long id);
-
-    void bathInsert(List<Contact> contacts);
 }
