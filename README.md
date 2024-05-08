@@ -63,10 +63,10 @@ testImplementation("org.springframework.boot:spring-boot-starter-test")
 **ЗАПУСК ПРИЛОЖЕНИЯ ЧЕРЕЗ DOCKER**
 * Проверьте, установлен-ли у вас Docker (введите в терминале: docker version).
 * Запускаем образ приложения (введите в терминале: docker run -it skillbox-third-task).
-* По умолчанию предложены следующие настройки в docker-compose:
-  _открываем порт 5432 для возможности подключения к БД;
-  при старте контейнера создается БД с именем contacts;
-  USER = postgres, PASSWORD = postgres;
-  при старте контейнера выполняется файл init.sql, создается схема contacts_schema, 
-  создается таблица contacts в схеме contacts_schema (с полями id, first_name, last_name, email, phone)._
+* Запускаем docker-compose.yml (введите в терминале: docker-compose up), который создаст контейнер из образа postgres версии 12.3.
+* По умолчанию указаны следующие настройки в docker-compose:
+  _открываем локальный порт 5432 для возможности подключения к БД по порту 5432;
+  при старте контейнера создается БД с именем contacts и USER = postgres, PASSWORD = postgres;
+  при старте контейнера выполняется файл init.sql (для сохранения данных после закрытия контейнера),
+  создается схема contacts_schema, создается таблица contacts в схеме contacts_schema (с полями id, first_name, last_name, email, phone)._
 

@@ -11,8 +11,8 @@ import java.util.Optional;
 
 // вариант репозитория без БД
 @Repository
-@Slf4j
 //@Primary
+@Slf4j
 
 public class InMemoryContactsRepository implements ContactRepository {
 
