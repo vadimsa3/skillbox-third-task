@@ -1,5 +1,10 @@
-<h1 align="center">УЧЕТ СТУДЕНТОВ</h1>
-<h2 align="center">Консольное приложение (со стартером Spring Shell) с возможностью добавлять студента в базу, удалять студента из базы, получать список всех студентов, очищать базу студентов.</h2>
+<h1 align="center">СПИСОК КОНТАКТОВ</h1>
+<h2 align="center">Консольное приложение с интерфейсом, реализованным с помощью Thymeleaf, 
+обработка запросов выполняется через контроллеры Spring MVC. Возможности приложения: вывод всех контактов в таблице
+(со всеми полями сущности - контакта); добавление нового контакта через форму (ID не добавляется через UI);
+редактирование имеющегося контакта через форму (ID не меняется); удаление конкретного контакта через кнопку
+в списке контактов.
+</h2>
 
 ## **СОДЕРЖАНИЕ:** ##
 * [ПОДГОТОВКА К ЗАПУСКУ](#инструкция_по_запуску)
@@ -11,56 +16,57 @@
 **1. Проверьте установлены-ли следующие компоненты и установите при их отсутствии:**
 * Java Development Kit (JDK) версии 17 или выше.
 * Gradle - система автоматической сборки проектов.
-* Lombok - библиотека для исключения лишнего кода.
+* Docker — ПО для автоматизации развёртывания и управления приложениями.
 
 **2. Клонируйте репозиторий.**
 * Клонируйте репозиторий с кодом проекта на свой локальный компьютер:  
-  git clone https://github.com/vadimsa3/skillbox-second-task/tree/master/second-task
+  git clone https://github.com/vadimsa3/skillbox-third-task.git
 
 * Проверьте наличие зависимостей в файле _build.gradle.kts_:
 
-  _dependencies {  
-  implementation("org.springframework.shell:spring-shell-starter")  
-  compileOnly("org.projectlombok:lombok")  
-  annotationProcessor("org.projectlombok:lombok")  
-  }_
+**Проверьте подключение зависимостей в build.gradle.kts:**
+* Thymeleaf - механизм шаблонов.
+* Starter-web - стартер подтянет в проект все библиотеки, необходимые для разработки Spring MVC-приложений.
+* Starter-data-jdbc - стартер для подключения к реляционным базам данных (доступ к данным через JdbcTemplate).
+* Postgresql - объектно-реляционная система управления базами данных.
+* Lombok - библиотека для исключения лишнего кода.
+
+_Пример:_
+_dependencies {
+implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+implementation("org.springframework.boot:spring-boot-starter-web")
+implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
+runtimeOnly("org.postgresql:postgresql")
+compileOnly("org.projectlombok:lombok")
+annotationProcessor("org.projectlombok:lombok")
+testImplementation("org.springframework.boot:spring-boot-starter-test")
+}_
 
 <a name="запуск_и_работа"></a>
 ## **ЗАПУСК И РАБОТА ПРИЛОЖЕНИЯ** ##
 
 * При старте приложения будут созданы два студента и помещены в список.
-  Отключатить эту функцию возможно в application.properties, изменив статус _true_ на _false_.  
+*   Отключатить эту функцию возможно в application.properties, изменив статус _true_ на _false_.  
   ![Изображение](https://github.com/vadimsa3/skillbox-second-task/blob/master/second-task/src/main/resources/raw/start-create.jpg "Создание студентов по умолчанию")
 
 1. Запустите приложение посредством IntelliJ IDEA.
 2. Из командной строки, командой help можно получит перечень доступных приложению команд.
    ![Изображение](https://github.com/vadimsa3/skillbox-second-task/blob/master/second-task/src/main/resources/raw/list-commands.jpg "Доступные команды")
 
-3. Следуйте доступным командам.
-
-    * команда _delete-student_ - удаление студента из перечня по его id  
-      _(пример: shell:>shell:>delete-student 1,_
-      результат: _Student deleted: 1)_
-
-    * команда _get-student_ - получение студента из списка по его id  
-      _(пример: shell:>get-student 2,
-      результат: _Student 2 - Petrov Andrey, age: 17)__
-
-    * команда _add-student_ - добавление в список нового студента  
-      _(пример: shell:>add-student Ivanov Ivan 25,
-      результат: _Student added: Student 3 - Ivan Ivanov, age: 25)__
-
-    * команда _view-students_ - получение списка студентов  
-      _(пример: shell:>view-students,_
-      _результат:_ _Student 1 - Ivanov Ivan, age: 18 Student 2 - Petrov Andrey, age: 17)_
-
-    * команда _clear-students_ - очистка списка студентов  
-      _(пример: shell:>clear-students,_
-      _результат:_ _The list of students has been cleared)_
-
-    * команда _exit_ - завершение работы программы
+3. Доступные команды, обрабатываемые приложением:
+   * вывод всех контактов из базы;
+   * добавление нового контакта в базу через форму;
+   * редактирование имеющегося контакта через форму;
+   * удаление выбраного контакта кнопкой.
 
 ![Изображение](https://github.com/vadimsa3/skillbox-second-task/blob/master/second-task/src/main/resources/raw/docker.png)
 **ЗАПУСК ПРИЛОЖЕНИЯ ЧЕРЕЗ DOCKER**
 * Проверьте, установлен-ли у вас Docker (введите в терминале: docker version).
-* Запустите образ приложения (введите в терминале: docker run -it skillbox-second-task).
+* Запускаем образ приложения (введите в терминале: docker run -it skillbox-third-task).
+* По умолчанию предложены следующие настройки в docker-compose:
+  _открываем порт 5432 для возможности подключения к БД;
+  при старте контейнера создается БД с именем contacts;
+  USER = postgres, PASSWORD = postgres;
+  при старте контейнера выполняется файл init.sql, создается схема contacts_schema, 
+  создается таблица contacts в схеме contacts_schema (с полями id, first_name, last_name, email, phone)._
+

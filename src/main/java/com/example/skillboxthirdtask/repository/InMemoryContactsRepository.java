@@ -2,6 +2,7 @@ package com.example.skillboxthirdtask.repository;
 
 import com.example.skillboxthirdtask.model.Contact;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ import java.util.Optional;
 // вариант репозитория без БД
 @Repository
 @Slf4j
+//@Primary
+
 public class InMemoryContactsRepository implements ContactRepository {
 
     private final List<Contact> contacts = new ArrayList<>();
