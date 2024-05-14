@@ -8,10 +8,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Primary;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.ArgumentPreparedStatementSetter;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapperResultSetExtractor;
 import org.springframework.stereotype.Repository;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,9 +53,9 @@ public class DatabaseContactsRepository implements ContactRepository {
     public Contact save(Contact contact) {
         log.debug("Calling DatabaseContactsRepository -> save with Contact: {}", contact);
         contact.setId(System.currentTimeMillis());
-        String sqlRequest = "INSERT INTO contact (id, firstName, lastName, email, phone) VALUES (?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sqlRequest, contact.getId(), contact.getFirstName(),
-                contact.getLastName(), contact.getEmail(), contact.getPhone());
+        String sqlRequest = "INSERT INTO contact (firstName, lastName, email, phone, id) VALUES (?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sqlRequest, contact.getFirstName(),
+                contact.getLastName(), contact.getEmail(), contact.getPhone(), contact.getId());
         return contact;
     }
 
@@ -76,4 +79,27 @@ public class DatabaseContactsRepository implements ContactRepository {
         String sqlRequest = "DELETE FROM contact WHERE id = ?";
         jdbcTemplate.update(sqlRequest, id);
     }
+
+//    // метод для пакетной операции вставки (отправка несколько sql запросов за одну трансакцию)
+//    @Override
+//    public void batchInsert(List<Contact> contacts) {
+//        log.debug("Calling DatabaseContactsRepository -> batchInsert");
+//        String sqlRequest = "INSERT INTO contact (id, firstName, lastName, email, phone) VALUES (?, ?, ?, ?, ?)";
+//        jdbcTemplate.batchUpdate(sqlRequest, new BatchPreparedStatementSetter() {
+//            @Override
+//            public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
+//                Contact contact = contacts.get(i);
+//                preparedStatement.setLong(1, contact.getId());
+//                preparedStatement.setString(2, contact.getFirstName());
+//                preparedStatement.setString(3, contact.getLastName());
+//                preparedStatement.setString(4, contact.getEmail());
+//                preparedStatement.setString(5, contact.getPhone());
+//            }
+//            // размер пакетной операции
+//            @Override
+//            public int getBatchSize() {
+//                return contacts.size();
+//            }
+//        });
+//    }
 }
