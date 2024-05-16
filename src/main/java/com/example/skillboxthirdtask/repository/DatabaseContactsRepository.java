@@ -84,16 +84,16 @@ public class DatabaseContactsRepository implements ContactRepository {
 //    @Override
 //    public void batchInsert(List<Contact> contacts) {
 //        log.debug("Calling DatabaseContactsRepository -> batchInsert");
-//        String sqlRequest = "INSERT INTO contact (id, firstName, lastName, email, phone) VALUES (?, ?, ?, ?, ?)";
+//        String sqlRequest = "INSERT INTO contact (firstName, lastName, email, phone, id) VALUES (?, ?, ?, ?, ?)";
 //        jdbcTemplate.batchUpdate(sqlRequest, new BatchPreparedStatementSetter() {
 //            @Override
 //            public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
 //                Contact contact = contacts.get(i);
-//                preparedStatement.setLong(1, contact.getId());
-//                preparedStatement.setString(2, contact.getFirstName());
-//                preparedStatement.setString(3, contact.getLastName());
-//                preparedStatement.setString(4, contact.getEmail());
-//                preparedStatement.setString(5, contact.getPhone());
+//                preparedStatement.setString(1, contact.getFirstName());
+//                preparedStatement.setString(2, contact.getLastName());
+//                preparedStatement.setString(3, contact.getEmail());
+//                preparedStatement.setString(4, contact.getPhone());
+//                preparedStatement.setLong(5, contact.getId());
 //            }
 //            // размер пакетной операции
 //            @Override
