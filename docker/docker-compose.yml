@@ -7,14 +7,14 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=contacts
+      - POSTGRES_DB=contactsDB
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
         # создаем контейнер на основе образа postgres версии 12.3
         # открываем локальный порт 5432 для возможности подключения к БД по порту 5432
         # устанавливаем переменные среды environment (устанавливаем USER и PASSWORD для доступа к БД)
-        # указываем имя БД (POSTGRES_DB=contacts), которая создается при старте контейнера
+        # указываем имя БД (POSTGRES_DB=contactsDB), которая создается при старте контейнера
         # для выполнения файла init.sql (для сохранения данных после закрытия контейнера) при старте в volumes:
         # - описываем место где хранится файл init.sql (до :) и где он будет лежать в контейнере (после :)
         # ./init.sql:/docker-entrypoint-initdb.d/init.sql запуститься автоматом при запуске контейнера

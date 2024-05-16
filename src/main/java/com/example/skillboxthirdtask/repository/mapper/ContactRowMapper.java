@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-// отвечает за маппинг данных из БД в сущность Contact
+// отвечает за маппинг данных, считанных из БД в сущность Contact (результат маппинга Contact)
 public class ContactRowMapper implements RowMapper<Contact> {
 
     @Override
