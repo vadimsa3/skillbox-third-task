@@ -16,4 +16,7 @@ public interface ContactRepository {
     Contact update(Contact contact);
 
     void deleteById(Long id);
+
+    // метод для пакетной операции вставки (отправка несколько sql запросов за одну трансакцию)
+    void batchInsert(List<Contact> contacts);
 }

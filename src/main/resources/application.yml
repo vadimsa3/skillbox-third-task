@@ -1,7 +1,7 @@
 # свойства для подключения к базе данных
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/contactsDB
+    url: jdbc:postgresql://localhost:5432/contacts
     username: postgres
     password: postgres
     hikari:

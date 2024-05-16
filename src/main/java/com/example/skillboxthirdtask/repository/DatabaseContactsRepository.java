@@ -80,26 +80,26 @@ public class DatabaseContactsRepository implements ContactRepository {
         jdbcTemplate.update(sqlRequest, id);
     }
 
-//    // метод для пакетной операции вставки (отправка несколько sql запросов за одну трансакцию)
-//    @Override
-//    public void batchInsert(List<Contact> contacts) {
-//        log.debug("Calling DatabaseContactsRepository -> batchInsert");
-//        String sqlRequest = "INSERT INTO contact (firstName, lastName, email, phone, id) VALUES (?, ?, ?, ?, ?)";
-//        jdbcTemplate.batchUpdate(sqlRequest, new BatchPreparedStatementSetter() {
-//            @Override
-//            public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
-//                Contact contact = contacts.get(i);
-//                preparedStatement.setString(1, contact.getFirstName());
-//                preparedStatement.setString(2, contact.getLastName());
-//                preparedStatement.setString(3, contact.getEmail());
-//                preparedStatement.setString(4, contact.getPhone());
-//                preparedStatement.setLong(5, contact.getId());
-//            }
-//            // размер пакетной операции
-//            @Override
-//            public int getBatchSize() {
-//                return contacts.size();
-//            }
-//        });
-//    }
+    // метод для пакетной операции вставки (отправка несколько sql запросов за одну трансакцию)
+    @Override
+    public void batchInsert(List<Contact> contacts) {
+        log.debug("Calling DatabaseContactsRepository -> batchInsert");
+        String sqlRequest = "INSERT INTO contact (firstName, lastName, email, phone, id) VALUES (?, ?, ?, ?, ?)";
+        jdbcTemplate.batchUpdate(sqlRequest, new BatchPreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
+                Contact contact = contacts.get(i);
+                preparedStatement.setString(1, contact.getFirstName());
+                preparedStatement.setString(2, contact.getLastName());
+                preparedStatement.setString(3, contact.getEmail());
+                preparedStatement.setString(4, contact.getPhone());
+                preparedStatement.setLong(5, contact.getId());
+            }
+            // размер пакетной операции
+            @Override
+            public int getBatchSize() {
+                return contacts.size();
+            }
+        });
+    }
 }

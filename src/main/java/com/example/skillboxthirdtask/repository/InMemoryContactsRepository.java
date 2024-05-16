@@ -58,4 +58,9 @@ public class InMemoryContactsRepository implements ContactRepository {
         log.debug("Call deleteById in InMemoryContactsRepository. ID is {}", id);
         findById(id).ifPresent(contacts::remove);
     }
+
+    @Override
+    public void batchInsert(List<Contact> contacts) {
+        this.contacts.addAll(contacts);
+    }
 }
