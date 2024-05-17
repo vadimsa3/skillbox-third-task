@@ -6,5 +6,6 @@ spring:
     password: postgres
     hikari:
       schema: contacts_schema
+    driver-class-name: org.postgresql.Driver
 #logging.level.root: DEBUG
 
