@@ -12,9 +12,3 @@ COPY build/libs/skillbox-third-task-0.0.1-SNAPSHOT.jar contacts-app.jar
 
 # команда для запуска приложения
 CMD ["java", "-jar", "contacts-app.jar"]
-
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# необходимо создать докер файл
-# сначала jar из gradle
-# потом из терминала docker build -t название
-#https://www.youtube.com/watch?v=x9SalIycd1Y

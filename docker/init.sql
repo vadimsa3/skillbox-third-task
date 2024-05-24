@@ -19,3 +19,5 @@ CREATE TABLE IF NOT EXISTS contacts_schema.contact
 --      phone VARCHAR(255) NOT NULL
 );
 
+
+
