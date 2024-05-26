@@ -9,5 +9,4 @@ public class SkillboxThirdTaskApplication {
     public static void main(String[] args) {
         SpringApplication.run(SkillboxThirdTaskApplication.class, args);
     }
-
 }
