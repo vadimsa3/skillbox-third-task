@@ -1,10 +1,12 @@
 -- Файл выполняется при старте контейнера
 --
+CREATE DATABASE IF NOT EXISTS contacts;
+
 -- Создание схемы contacts_schema
 CREATE SCHEMA IF NOT EXISTS contacts_schema;
 
 -- Создание таблицы contact в схеме contacts_schema
-CREATE TABLE IF NOT EXISTS contacts_schema.contact
+CREATE TABLE IF NOT EXISTS contact
 (
     id BIGINT PRIMARY KEY,
     first_name VARCHAR(255) NOT NULL,
@@ -12,6 +14,8 @@ CREATE TABLE IF NOT EXISTS contacts_schema.contact
     email VARCHAR(255) NOT NULL,
     phone VARCHAR(255) NOT NULL
 );
+
+INSERT INTO contact VALUES (0003, 'Alex', 'Sales', 'alsa@gmail.com', '+74951223344');
 
 
 
