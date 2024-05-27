@@ -69,4 +69,4 @@ testImplementation("org.springframework.boot:spring-boot-starter-test")
   _открываем локальный порт 5432 для возможности подключения к БД по порту 5432;
   при старте контейнера создается БД с именем contacts и USER = postgres, PASSWORD = postgres;
   при старте контейнера выполняется файл init.sql (для сохранения данных после закрытия контейнера),
-  создается схема contacts_schema, создается таблица contacts в схеме contacts_schema (с полями id, first_name, last_name, email, phone)._
+  создается схема contacts_schema, создается таблица contact в схеме contacts_schema (с полями id, first_name, last_name, email, phone)._
