@@ -15,7 +15,4 @@ CREATE TABLE IF NOT EXISTS contact
     phone VARCHAR(255) NOT NULL
 );
 
-INSERT INTO contact VALUES (0003, 'Alex', 'Sales', 'alsa@gmail.com', '+74951223344');
-
-
 

@@ -49,21 +49,16 @@ testImplementation("org.springframework.boot:spring-boot-starter-test")
 <a name="запуск_и_работа"></a>
 ## **ЗАПУСК И РАБОТА ПРИЛОЖЕНИЯ** ##
 
-* Запустите приложение посредством IntelliJ IDEA.
-* 
-* 
-* 
-* 
+* Откройте приложение посредством IntelliJ IDEA.
+* Файл docker-compose.yml содержит инструкции для запуска и настройки сервисов, в том числе указаны по умолчанию:
+  POSTGRES_USER: "postgres"
+  POSTGRES_PASSWORD: "postgres"
+* Для старта проекта ("поднятия" сервисов) из терминала переходим в папку docker командой cd docker и стартуем проект командой docker-compose up
+* Запускаем SkillboxThirdTaskApplication.
+* При первом запуске будет автоматически заполнена новая БД данными из класса DatabaseContactCreator
+* В браузере по адресу http://localhost:8080/contacts получаем список имеющихся контактов и возможность добавления, редактирования и удаления контакта из БД
+  ![Изображение](https://github.com/vadimsa3/skillbox-second-task/blob/master/second-task/src/main/resources/raw/list-commands.jpg "Работа с БД")
 
-1. Запустите приложение посредством IntelliJ IDEA.
-2. Из командной строки, командой help можно получит перечень доступных приложению команд.
-   ![Изображение](https://github.com/vadimsa3/skillbox-second-task/blob/master/second-task/src/main/resources/raw/list-commands.jpg "Доступные команды")
-
-3. Доступные команды, обрабатываемые приложением:
-   * вывод всех контактов из базы;
-   * добавление нового контакта в базу через форму;
-   * редактирование имеющегося контакта через форму;
-   * удаление выбраного контакта кнопкой.
 
 ![Изображение](https://github.com/vadimsa3/skillbox-second-task/blob/master/second-task/src/main/resources/raw/docker.png)
 **ЗАПУСК ПРИЛОЖЕНИЯ ЧЕРЕЗ DOCKER**
@@ -75,4 +70,3 @@ testImplementation("org.springframework.boot:spring-boot-starter-test")
   при старте контейнера создается БД с именем contacts и USER = postgres, PASSWORD = postgres;
   при старте контейнера выполняется файл init.sql (для сохранения данных после закрытия контейнера),
   создается схема contacts_schema, создается таблица contacts в схеме contacts_schema (с полями id, first_name, last_name, email, phone)._
-
