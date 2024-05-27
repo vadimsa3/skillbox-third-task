@@ -80,7 +80,7 @@ public class DatabaseContactsRepository implements ContactRepository {
         jdbcTemplate.update(sqlRequest, id);
     }
 
-    // метод для пакетной операции вставки (отправка несколько sql запросов за одну трансакцию)
+    // пакетная операция вставки (отправка несколько sql запросов за одну трансакцию)
     @Override
     public void batchInsert(List<Contact> contacts) {
         log.debug("Calling DatabaseContactsRepository -> batchInsert");
