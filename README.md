@@ -57,7 +57,7 @@ testImplementation("org.springframework.boot:spring-boot-starter-test")
 * Запускаем SkillboxThirdTaskApplication.
 * При первом запуске будет автоматически заполнена новая БД данными из класса DatabaseContactCreator
 * В браузере по адресу http://localhost:8080/contacts получаем список имеющихся контактов и возможность добавления, редактирования и удаления контакта из БД
-  ![Изображение](https://github.com/vadimsa3/skillbox-second-task/blob/master/second-task/src/main/resources/raw/list-commands.jpg "Работа с БД")
+  ![Изображение](https://github.com/vadimsa3/skillbox-second-task/blob/master/second-task/src/main/resources/raw/list-commands.jpg "Визуализация")
 
 
 ![Изображение](https://github.com/vadimsa3/skillbox-second-task/blob/master/second-task/src/main/resources/raw/docker.png)
